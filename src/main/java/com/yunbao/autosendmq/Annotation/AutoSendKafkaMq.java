@@ -13,5 +13,5 @@ public @interface AutoSendKafkaMq {
 
     String exchangeType() default ExchangeTypes.TOPIC;
 
-    String routringKey() default  "*";
+    String routingKey() default  "*";
 }

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.Executors;
 
 @Component
 public class TemplateConfig implements ApplicationListener<ContextRefreshedEvent> {
@@ -59,7 +60,6 @@ public class TemplateConfig implements ApplicationListener<ContextRefreshedEvent
             }
         }
         beanDefinitionRegistry.registerBeanDefinition(target.getName(), beanDefinition);
-
     }
 
 }

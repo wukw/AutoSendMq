@@ -4,6 +4,7 @@ package com.yunbao.autosendmq.Annotation;
 import org.springframework.amqp.core.ExchangeTypes;
 
 import java.lang.annotation.*;
+import java.util.concurrent.TimeUnit;
 
 @Target({ElementType.METHOD })
 @Retention(RetentionPolicy.RUNTIME)
@@ -13,5 +14,11 @@ public @interface AutoSendRabbitMq {
 
     String exchangeType() default ExchangeTypes.TOPIC;
 
-    String routringKey() default  "*";
+    String routingKey() default  "*";
+
+    long delayTime() default   0;
+
+    TimeUnit timeUnit() default TimeUnit.MILLISECONDS;
+
+    boolean sync() default  true;
 }

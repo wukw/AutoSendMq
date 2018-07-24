@@ -9,7 +9,6 @@ public class Test {
 
     @AutoSendRabbitMq(exchangeNmae = "testexchange")
     public String print() {
-        System.out.println("scanClass1");
         return "aaaaaaaaaaaa";
     }
 

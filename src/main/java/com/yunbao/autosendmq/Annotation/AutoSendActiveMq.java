@@ -14,4 +14,6 @@ public @interface AutoSendActiveMq {
     String exchangeType() default ExchangeTypes.TOPIC;
 
     String routringKey() default  "*";
+
+    boolean sync() default  true;
 }

@@ -16,7 +16,6 @@ public class AutoSendFactoryBean<T> implements InitializingBean, FactoryBean {
 
     @Override
     public Object getObject() throws Exception {
-        System.out.println("初始化对象");
         Class innerClass = Class.forName(innerClassName);
         return innerClass.newInstance();
 

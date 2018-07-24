@@ -1,4 +1,4 @@
-package com.yunbao.autosendmq.Mq;
+package com.yunbao.autosendmq.Mq.SendTemplate;
 
 import org.springframework.amqp.rabbit.connection.AbstractConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.Set;
 
 @Component
-public class TemplateConfig  implements ApplicationListener<ContextRefreshedEvent> {
+public class TemplateConfig implements ApplicationListener<ContextRefreshedEvent> {
     @Autowired
     ApplicationContext applicationContext;
 
@@ -40,7 +40,6 @@ public class TemplateConfig  implements ApplicationListener<ContextRefreshedEven
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        System.out.println("初始化template");
         rabbitTemplate();
 
     }

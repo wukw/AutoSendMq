@@ -1,4 +1,4 @@
-package com.yunbao.autosendmq.Mq;
+package com.yunbao.autosendmq.Mq.DestinationCreate;
 
 import com.yunbao.autosendmq.Annotation.AutoSendActiveMq;
 import org.apache.activemq.ActiveMQConnectionFactory;
@@ -9,13 +9,12 @@ import org.springframework.stereotype.Component;
 import javax.jms.Connection;
 import javax.jms.Session;
 import java.lang.annotation.Annotation;
-import java.util.Arrays;
 
 /**
  * activetemplate创建
  */
 @Component
-public class AutoActiveMqTemplateProcess extends AutoMqTemplateProcessFactory {
+public class AutoActiveMqDestinationCreate extends AutoMqDestinationCreateFactory {
     ApplicationContext applicationContext ;
 
     @Override

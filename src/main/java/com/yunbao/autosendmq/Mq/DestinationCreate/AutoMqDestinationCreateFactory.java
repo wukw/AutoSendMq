@@ -1,4 +1,4 @@
-package com.yunbao.autosendmq.Mq;
+package com.yunbao.autosendmq.Mq.DestinationCreate;
 
 import com.yunbao.autosendmq.Annotation.AutoSendActiveMq;
 import com.yunbao.autosendmq.Annotation.AutoSendKafkaMq;
@@ -7,7 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
 import java.lang.annotation.Annotation;
-public abstract class AutoMqTemplateProcessFactory implements  ApplicationContextAware {
+public abstract class AutoMqDestinationCreateFactory implements  ApplicationContextAware {
 
 
 
@@ -16,7 +16,7 @@ public abstract class AutoMqTemplateProcessFactory implements  ApplicationContex
     public static Integer  execute(Annotation[] annotations,ApplicationContext applicationContext){
         int count = 0;
         for(Annotation annotation : annotations){
-            AutoMqTemplateProcessFactory autoMqAnnotionProcessFactory =  getAutoMqAnnotionProcessFactory(annotation,applicationContext);
+            AutoMqDestinationCreateFactory autoMqAnnotionProcessFactory =  getAutoMqAnnotionProcessFactory(annotation,applicationContext);
             if(autoMqAnnotionProcessFactory != null) {
                 autoMqAnnotionProcessFactory.process(annotation);
                 count++;
@@ -25,15 +25,15 @@ public abstract class AutoMqTemplateProcessFactory implements  ApplicationContex
         return count;
     }
 
-    public static AutoMqTemplateProcessFactory getAutoMqAnnotionProcessFactory(Annotation annotation, ApplicationContext applicationContext){
+    public static AutoMqDestinationCreateFactory getAutoMqAnnotionProcessFactory(Annotation annotation, ApplicationContext applicationContext){
         if(annotation instanceof AutoSendRabbitMq){
-            return applicationContext.getBean(AutoRabbitMqTrmplateProcess.class);
+            return applicationContext.getBean(AutoRabbitMqDestinationCreate.class);
         }
         if(annotation instanceof AutoSendKafkaMq){
-            return applicationContext.getBean(AutoKafkaMqTemplateProcess.class);
+            return applicationContext.getBean(AutoKafkaMqDestinationCreate.class);
         }
         if(annotation instanceof AutoSendActiveMq){
-            return applicationContext.getBean(AutoActiveMqTemplateProcess.class);
+            return applicationContext.getBean(AutoActiveMqDestinationCreate.class);
         }
         return null;
     }

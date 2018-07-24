@@ -1,4 +1,4 @@
-package com.yunbao.autosendmq.Mq;
+package com.yunbao.autosendmq.Mq.DestinationCreate;
 
 import com.yunbao.autosendmq.Annotation.AutoSendKafkaMq;
 import org.springframework.beans.BeansException;
@@ -10,13 +10,12 @@ import java.lang.annotation.Annotation;
 
 
 @Component
-public class AutoKafkaMqTemplateProcess extends AutoMqTemplateProcessFactory {
+public class AutoKafkaMqDestinationCreate extends AutoMqDestinationCreateFactory {
     ApplicationContext applicationContext ;
 
     @Override
     public void process(Annotation annotation) {
         if(annotation instanceof AutoSendKafkaMq){
-            System.out.println("kafkamq");
         }
 
 

@@ -34,6 +34,12 @@ public class AutoSendMqAnnitationBean implements BeanFactoryPostProcessor ,Dispo
     public void destroy() throws Exception {
 
     }
+
+    @Override
+    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+        return bean;
+    }
+
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         Method[] methods = bean.getClass().getMethods();

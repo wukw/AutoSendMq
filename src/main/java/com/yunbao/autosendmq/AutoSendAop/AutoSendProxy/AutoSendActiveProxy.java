@@ -45,9 +45,11 @@ public class AutoSendActiveProxy extends AutoSendFactory {
     }
 
     @Override
-    public void sendMq(String destinationName, Object obj,String routingKey) {
+    public void sendMq(String[] destinationName, Object obj,String routingKey) {
        if(jmsMessagingTemplate != null) {
-           jmsMessagingTemplate.convertAndSend(destinationName, obj);
+           for(String temp : destinationName) {
+               jmsMessagingTemplate.convertAndSend(temp, obj);
+           }
        }
     }
 

@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface AutoSendActiveMq {
-    String  queueNmae() ;
+    String[]  queueNmae() ;
 
     QueueType queueType() default QueueType.queue;
 

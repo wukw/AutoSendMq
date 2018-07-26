@@ -28,12 +28,14 @@ public class AutoRabbitMqDestinationCreate extends AutoMqDestinationCreateFactor
             return ;
         }
         AutoSendRabbitMq autoSendMq = (AutoSendRabbitMq) annotation;
-        String exchangeName =  autoSendMq.exchangeNmae();
-        if(exchangeName != null ){
+        String[] exchangeNameS =  autoSendMq.exchangeNmae();
+        if(exchangeNameS.length > 0){
             //创建exchange
             try {
-                AMQP.Exchange.DeclareOk isok =   connectionFactory.createConnection().createChannel(false).exchangeDeclare(exchangeName, ExchangeTypes.TOPIC);
-                log.debug("create exchange" + exchangeName);
+                for(String nameTemp : exchangeNameS) {
+                    connectionFactory.createConnection().createChannel(false).exchangeDeclare(nameTemp, ExchangeTypes.TOPIC);
+                    log.debug("create exchange" + nameTemp);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }

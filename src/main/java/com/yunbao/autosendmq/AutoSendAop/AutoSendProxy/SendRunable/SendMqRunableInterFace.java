@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.concurrent.TimeUnit;
 @Data
 public abstract class SendMqRunableInterFace implements   Runnable {
-    String destinationName ;
+    String[] destinationName ;
 
     Object object;
 

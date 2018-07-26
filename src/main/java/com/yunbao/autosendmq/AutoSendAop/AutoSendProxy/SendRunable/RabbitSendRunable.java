@@ -12,7 +12,7 @@ public class RabbitSendRunable extends SendMqRunableInterFace {
 
 
 
-    public RabbitSendRunable(AutoSendFactory autoSendFactory, Object object, String routingKey, String exchangeNmae, boolean isSync, TimeUnit timeUnit, Long times) {
+    public RabbitSendRunable(AutoSendFactory autoSendFactory, Object object, String routingKey, String[] exchangeNmae, boolean isSync, TimeUnit timeUnit, Long times) {
         this.autoSendFactory = autoSendFactory;
         this.object = object;
         this.routingKey = routingKey;

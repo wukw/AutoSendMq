@@ -30,10 +30,13 @@ public class AutoActiveMqDestinationCreate extends AutoMqDestinationCreateFactor
                 connection.start();
                 Session session = connection.createSession(true, Session.AUTO_ACKNOWLEDGE);
                 Destination destination = null;
-                if (autoSendActiveMq.queueType().equals(AutoSendActiveMq.QueueType.topic)) {
-                    destination = session.createTopic(autoSendActiveMq.queueNmae());
-                } else {
-                    destination = session.createQueue(autoSendActiveMq.queueNmae());
+                String[] queueNames  = autoSendActiveMq.queueNmae();
+                for(String nameTemp : queueNames) {
+                    if (autoSendActiveMq.queueType().equals(AutoSendActiveMq.QueueType.topic)) {
+                        destination = session.createTopic(nameTemp);
+                    } else {
+                        destination = session.createQueue(nameTemp);
+                    }
                 }
                 // 得到消息生成者【发送者】 要不然无法发送消息
                 MessageProducer producer = session.createProducer(destination);

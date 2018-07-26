@@ -44,7 +44,7 @@ public abstract class AutoSendFactory implements ApplicationListener<ContextRefr
 
     public abstract Object autoSendMq(Method method,Object object);
 
-    public abstract void sendMq(String destinationName,Object obj,String routingKey);
+    public abstract void sendMq(String[] destinationName,Object obj,String routingKey);
 
     /**
      * 发送任务

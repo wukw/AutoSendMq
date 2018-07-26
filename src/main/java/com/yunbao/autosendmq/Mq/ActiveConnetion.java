@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-//@Component
+@Component
 public class ActiveConnetion extends ActiveMQConnectionFactory {
 
     public ActiveConnetion(){

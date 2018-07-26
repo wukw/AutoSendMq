@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface AutoSendRabbitMq {
-    String  exchangeNmae () ;
+    String[]  exchangeNmae () ;
 
     String exchangeType() default ExchangeTypes.TOPIC;
 

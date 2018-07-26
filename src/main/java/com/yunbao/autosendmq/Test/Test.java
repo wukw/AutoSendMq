@@ -9,7 +9,7 @@ public class Test {
 
 
     @AutoSendRabbitMq(exchangeNmae = "testexchange")
-    @AutoSendActiveMq(queueNmae = "testauto")
+    @AutoSendActiveMq(queueNmae = "testautotopic",queueType = AutoSendActiveMq.QueueType.topic)
     public String print() {
         return "aaaaaaaaaaaa";
     }

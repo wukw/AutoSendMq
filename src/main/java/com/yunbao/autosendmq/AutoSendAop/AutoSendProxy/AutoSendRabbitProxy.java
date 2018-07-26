@@ -40,9 +40,11 @@ public class AutoSendRabbitProxy extends AutoSendFactory {
     }
 
     @Override
-    public void sendMq(String destinationName, Object obj,String routingKey) {
+    public void sendMq(String[] destinationName, Object obj,String routingKey) {
         if(rabbitTemplate != null) {
-            rabbitTemplate.convertAndSend(destinationName, routingKey, obj);
+            for(String temp : destinationName) {
+                rabbitTemplate.convertAndSend(temp, routingKey, obj);
+            }
         }
     }
 

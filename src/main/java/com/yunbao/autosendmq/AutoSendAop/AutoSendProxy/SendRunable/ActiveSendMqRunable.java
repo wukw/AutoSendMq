@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 public class ActiveSendMqRunable extends   SendMqRunableInterFace {
 
 
-    public ActiveSendMqRunable(AutoSendFactory autoSendFactory, String destinationName, Object object, boolean isSync, TimeUnit timeUnit, Long times) {
+    public ActiveSendMqRunable(AutoSendFactory autoSendFactory, String[] destinationName, Object object, boolean isSync, TimeUnit timeUnit, Long times) {
         this.autoSendFactory = autoSendFactory;
         this.destinationName = destinationName;
         this.object = object;

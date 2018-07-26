@@ -87,8 +87,8 @@ dependencies {
     compile group: 'org.springframework.amqp', name: 'spring-amqp', version: '2.0.4.RELEASE'
     // https://mvnrepository.com/artifact/org.springframework.amqp/spring-rabbit
     compile group: 'org.springframework.amqp', name: 'spring-rabbit', version: '2.0.4.RELEASE'
-    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-activemq
-    //compile group: 'org.springframework.boot', name: 'spring-boot-starter-activemq', version: '2.0.3.RELEASE'
+    //https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-activemq
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-activemq', version: '2.0.3.RELEASE'
 
     // https://mvnrepository.com/artifact/org.springframework/spring-aop
     compile group: 'org.springframework', name: 'spring-aop', version: '5.0.7.RELEASE'
@@ -99,9 +99,11 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.apache.activemq/activemq-spring
     compile group: 'org.apache.activemq', name: 'activemq-spring', version: '5.15.4'
-
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-amqp
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-amqp', version: '2.0.3.RELEASE'
+
+
+
 
     compileOnly "org.projectlombok:lombok:1.16.16"
 

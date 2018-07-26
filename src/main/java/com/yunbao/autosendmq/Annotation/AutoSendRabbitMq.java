@@ -21,4 +21,6 @@ public @interface AutoSendRabbitMq {
     TimeUnit timeUnit() default TimeUnit.MILLISECONDS;
 
     boolean sync() default  true;
+
+
 }

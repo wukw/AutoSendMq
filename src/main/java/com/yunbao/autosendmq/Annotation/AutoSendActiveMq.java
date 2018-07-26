@@ -1,9 +1,8 @@
 package com.yunbao.autosendmq.Annotation;
 
 
-import org.springframework.amqp.core.ExchangeTypes;
-
 import java.lang.annotation.*;
+import java.util.concurrent.TimeUnit;
 
 @Target({ElementType.METHOD })
 @Retention(RetentionPolicy.RUNTIME)
@@ -11,9 +10,19 @@ import java.lang.annotation.*;
 public @interface AutoSendActiveMq {
     String  queueNmae() ;
 
-    String exchangeType() default ExchangeTypes.TOPIC;
+    QueueType queueType() default QueueType.queue;
 
     String routingKey() default  "*";
 
     boolean sync() default  true;
+
+    long delayTime() default   0;
+
+    TimeUnit timeUnit() default TimeUnit.MILLISECONDS;
+
+
+    public enum QueueType{
+        topic,queue;
+
+    }
 }

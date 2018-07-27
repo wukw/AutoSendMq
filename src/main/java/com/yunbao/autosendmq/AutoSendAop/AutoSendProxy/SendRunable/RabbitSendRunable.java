@@ -1,6 +1,5 @@
 package com.yunbao.autosendmq.AutoSendAop.AutoSendProxy.SendRunable;
 
-import com.sun.istack.internal.NotNull;
 import com.yunbao.autosendmq.AutoSendAop.AutoSendProxy.AutoSendFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 

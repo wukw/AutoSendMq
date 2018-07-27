@@ -12,7 +12,7 @@ public class ActiveConnetion extends ActiveMQConnectionFactory {
     public ActiveConnetion(){
         super();
         try {
-            this.brokerURL = new URI("tcp://127.0.0.1:61616");
+            this.brokerURL = new URI("tcp://192.168.31.14:61616");
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }

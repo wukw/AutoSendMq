@@ -1,6 +1,7 @@
 package com.yunbao.autosendmq.Mq.DestinationCreate;
 
 import com.yunbao.autosendmq.Annotation.AutoSendActiveMq;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -13,6 +14,7 @@ import java.lang.annotation.Annotation;
  * activetemplate创建
  */
 @Component
+@Slf4j
 public class AutoActiveMqDestinationCreate extends AutoMqDestinationCreateFactory {
     ApplicationContext applicationContext ;
 
@@ -45,7 +47,7 @@ public class AutoActiveMqDestinationCreate extends AutoMqDestinationCreateFactor
                 session.commit();
             }
         }catch (Exception e){
-            return ;
+           log.warn("application no active connectionFactory");
         }finally {
             try {
                 if(connection != null) {

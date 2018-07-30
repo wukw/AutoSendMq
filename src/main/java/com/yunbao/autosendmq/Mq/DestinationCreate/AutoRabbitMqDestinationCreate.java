@@ -5,6 +5,7 @@ import com.yunbao.autosendmq.Annotation.AutoSendRabbitMq;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.ExchangeTypes;
 import org.springframework.amqp.rabbit.connection.AbstractConnectionFactory;
+import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
@@ -33,7 +34,7 @@ public class AutoRabbitMqDestinationCreate extends AutoMqDestinationCreateFactor
             //创建exchange
             try {
                 for(String nameTemp : exchangeNameS) {
-                    connectionFactory.createConnection().createChannel(false).exchangeDeclare(nameTemp, ExchangeTypes.TOPIC);
+                    connectionFactory.createConnection().createChannel(false).exchangeDeclare(nameTemp, autoSendMq.exchangeType());
                     log.debug("create exchange" + nameTemp);
                 }
             } catch (Exception e) {

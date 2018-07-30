@@ -21,7 +21,7 @@ public class AutoSendKafkaProxy extends AutoSendFactory {
     }
 
     @Override
-    public void sendMq(String[] destinationName, Object obj,String routingKing) {
+    public void doSendMq(String[] destinationName, Object obj,String routingKing) {
 
     }
 

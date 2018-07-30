@@ -1,17 +1,17 @@
 package com.yunbao.autosendmq.Test;
 
-import com.yunbao.autosendmq.Annotation.AutoSendActiveMq;
 import com.yunbao.autosendmq.Annotation.AutoSendRabbitMq;
+import com.yunbao.autosendmq.MainTest;
 import org.springframework.stereotype.Component;
 
-@Component("com.yunbao.autosendmq.Test.Test")
+@Component
 public class Test {
 
 
-    @AutoSendRabbitMq(exchangeNmae = "testexchange")
-    @AutoSendActiveMq(queueNmae = {"test1","test2"},queueType = AutoSendActiveMq.QueueType.topic)
-    public String print() {
-        return "aaaaaaaaaaaa";
+    @AutoSendRabbitMq(exchangeNmae = "testexchange",routingKey = "123")
+    //@AutoSendActiveMq(queueNmae = {"test1","test2"},queueType = AutoSendActiveMq.QueueType.topic)
+    public MainTest print() {
+        return  null;
     }
 
     @AutoSendRabbitMq(exchangeNmae = "testexchange")

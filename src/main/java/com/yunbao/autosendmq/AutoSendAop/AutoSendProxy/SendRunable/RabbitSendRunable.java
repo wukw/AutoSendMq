@@ -7,7 +7,6 @@ import java.util.concurrent.TimeUnit;
 
 public class RabbitSendRunable extends SendMqRunableInterFace {
 
-    RabbitTemplate rabbitTemplate ;
 
 
 
@@ -23,6 +22,6 @@ public class RabbitSendRunable extends SendMqRunableInterFace {
 
     @Override
     public void run() {
-        autoSendFactory.sendMq(destinationName,object,routingKey);
+        autoSendFactory.doSendMq(destinationName,object,routingKey);
     }
 }

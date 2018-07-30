@@ -14,7 +14,7 @@ public @interface AutoSendRabbitMq {
 
     String exchangeType() default ExchangeTypes.TOPIC;
 
-    String routingKey() default  "*";
+    String routingKey() default  "#";
 
     long delayTime() default   0;
 

@@ -3,7 +3,7 @@ package com.yunbao.autosendmq.Mq;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.stereotype.Component;
 
-//@Component("AutoConnectionFactory")
+@Component("AutoConnectionFactory")
 public class AutoConnectionFactory extends  CachingConnectionFactory {
 
     public AutoConnectionFactory() {
@@ -13,6 +13,8 @@ public class AutoConnectionFactory extends  CachingConnectionFactory {
         super.setUsername("yunbao");
         super.setPassword("yunbao");
         super.setVirtualHost("/yunbao");
+        super.setPublisherConfirms(true);
+        super.setPublisherReturns(true);
     }
 
 }

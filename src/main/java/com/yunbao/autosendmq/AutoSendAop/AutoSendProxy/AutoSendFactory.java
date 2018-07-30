@@ -44,7 +44,7 @@ public abstract class AutoSendFactory implements ApplicationListener<ContextRefr
 
     public abstract Object autoSendMq(Method method,Object object);
 
-    public abstract void sendMq(String[] destinationName,Object obj,String routingKey);
+    public abstract void doSendMq(String[] destinationName,Object obj,String routingKey);
 
     /**
      * 发送任务
@@ -58,7 +58,7 @@ public abstract class AutoSendFactory implements ApplicationListener<ContextRefr
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            sendMq(sendMqRunableInterFace.getDestinationName(),sendMqRunableInterFace.getObject(),sendMqRunableInterFace.getRoutingKey());
+            doSendMq(sendMqRunableInterFace.getDestinationName(),sendMqRunableInterFace.getObject(),sendMqRunableInterFace.getRoutingKey());
         }else{
             executor.schedule(sendMqRunableInterFace,sendMqRunableInterFace.getTimes(),sendMqRunableInterFace.getTimeUnit());
 

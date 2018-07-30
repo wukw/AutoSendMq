@@ -1,5 +1,6 @@
 package com.yunbao.autosendmq.Mq.SendTemplate;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.amqp.rabbit.connection.AbstractConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -23,10 +24,14 @@ import java.util.Set;
 import java.util.concurrent.Executors;
 
 @Component
+@Slf4j
 public class TemplateConfig implements ApplicationListener<ContextRefreshedEvent> {
     @Autowired
     ApplicationContext applicationContext;
 
+    public static final String  RabbitDefalutConfirmCallbackName = "RabbitConfirmCallback";
+
+    public static final String  RabbitDefaultReturnCallbackName = "RabbitReturnCallback";
 
     /**
      * 创建rabbitTemplate
@@ -36,10 +41,26 @@ public class TemplateConfig implements ApplicationListener<ContextRefreshedEvent
         try {
             abstractConnectionFactory = applicationContext.getBean(AbstractConnectionFactory.class);
         }catch (Exception e){
+            log.warn("autoSendRabbitMq no AbstractConnectionFactory ");
         }
         if (abstractConnectionFactory != null){
             Map<String,Object> properts = new HashMap();
             properts.put("connectionFactory",abstractConnectionFactory);
+            //设置发送确认
+            try {
+                RabbitTemplate.ConfirmCallback confirmCallback = (RabbitTemplate.ConfirmCallback) applicationContext.getBean(RabbitDefalutConfirmCallbackName);
+                properts.put("confirmCallback",confirmCallback);
+            }catch (Exception e){
+                log.info("autoSendRabbitMq no confirmCallback");
+            }
+            //设置发送失败回调
+            try {
+                RabbitReturn returnCallback = (RabbitReturn) applicationContext.getBean(RabbitDefaultReturnCallbackName);
+                properts.put("returnCallback",returnCallback);
+            }catch (Exception e){
+                log.info("autoSendRabbitMq no returnCallback");
+            }
+            properts.put("mandatory",true);
             createSpringBean(RabbitTemplate.class,properts);
          }
     }
@@ -97,5 +118,7 @@ public class TemplateConfig implements ApplicationListener<ContextRefreshedEvent
         }
         beanDefinitionRegistry.registerBeanDefinition(target.getName(), beanDefinition);
     }
+
+
 
 }

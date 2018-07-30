@@ -35,14 +35,14 @@ public class AutoSendMqProxyCglib implements MethodInterceptor {
 
     @Override
     public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
-        log.info(method.getName()+" interceptd by automq  starttime"+ new Date().getTime());
+        log.info(method.getName()+" interceptd by automq  starttime"+ System.currentTimeMillis());
         Object resultObj = proxy.invokeSuper(obj, args);
         //寻找符合的mq 匹配 发送方式
         List<AutoSendFactory> autoSendMqList = AutoSendFactory.chooseAutoSendMq(method,applicationContext);
         autoSendMqList.stream().forEach(temp ->{
             temp.autoSendMq(method,resultObj);
         });
-        log.info(method.getName()+" interceptd by automq  endtime"+ new Date().getTime());
+        log.info(method.getName()+" interceptd by automq  endtime"+ System.currentTimeMillis());
         return resultObj;
     }
 

@@ -19,6 +19,6 @@ public class ActiveSendMqRunable extends   SendMqRunableInterFace {
 
     @Override
     public void run() {
-        autoSendFactory.sendMq(destinationName,object,routingKey);
+        autoSendFactory.doSendMq(destinationName,object,routingKey);
     }
 }

@@ -1,2 +1,3 @@
 rootProject.name = 'AutoSendMq'
+include 'core'
 

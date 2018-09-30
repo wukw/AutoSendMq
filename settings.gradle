@@ -1,3 +1,4 @@
 rootProject.name = 'AutoSendMq'
 include 'core'
+include 'rabbit-plugin'
 

@@ -1,4 +1,4 @@
-package com.atsmq.annotation;
+package com.atsmq.rabbit.annotation;
 
 
 import org.springframework.amqp.core.ExchangeTypes;

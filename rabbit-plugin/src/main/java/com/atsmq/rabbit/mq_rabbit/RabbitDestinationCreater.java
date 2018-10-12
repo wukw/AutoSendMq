@@ -1,13 +1,12 @@
 package com.atsmq.rabbit.mq_rabbit;
 
-import com.atsmq.annotation.AnnotationMatchInterface;
 import com.atsmq.mq_extend.BaseMqDestination;
 import com.atsmq.rabbit.annotation.AutoSendRabbitMq;
 import org.springframework.amqp.rabbit.connection.AbstractConnectionFactory;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RabbitDestinationCreater extends BaseMqDestination<AutoSendRabbitMq ,RabbitConnection> {
+public class RabbitDestinationCreater extends BaseMqDestination<AutoSendRabbitMq ,RabbitConnection,AbstractConnectionFactory> {
 
     @Override
     public boolean createDestination(AutoSendRabbitMq annotation) {
@@ -24,9 +23,5 @@ public class RabbitDestinationCreater extends BaseMqDestination<AutoSendRabbitMq
             }
         }
         return true;
-    }
-
-    public RabbitDestinationCreater(AnnotationMatchInterface<AutoSendRabbitMq> autosendAnnotationMatchInterface) {
-        this.autosendAnnotationMatchInterface = autosendAnnotationMatchInterface;
     }
 }

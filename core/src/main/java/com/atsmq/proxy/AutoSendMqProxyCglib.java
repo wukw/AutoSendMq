@@ -32,6 +32,9 @@ public class AutoSendMqProxyCglib implements MethodInterceptor {
     @Override
     public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
         Object resultObj = proxy.invokeSuper(obj, args);
+        if(resultObj == null){
+            return resultObj;
+        }
         try {
            for(Annotation annotation : method.getAnnotations()) {
                if(MqSendtemplateFactory.hasKey(annotation.annotationType())){
@@ -39,8 +42,9 @@ public class AutoSendMqProxyCglib implements MethodInterceptor {
                    baseSendTemplate.doTemplateSend(annotation, resultObj);
                }
            }
-       }catch (Exception e){
-       }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return resultObj;
     }
 

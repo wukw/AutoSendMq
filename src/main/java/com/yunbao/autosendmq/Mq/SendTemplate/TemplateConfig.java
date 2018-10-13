@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.amqp.rabbit.connection.AbstractConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
@@ -117,6 +118,20 @@ public class TemplateConfig implements ApplicationListener<ContextRefreshedEvent
         }
         beanDefinitionRegistry.registerBeanDefinition(target.getName(), beanDefinition);
     }
+
+//    //创建监听器，监听队列
+//    @Bean
+//    public SimpleMessageListenerContainer mqMessageContainer(HandleService handleService) throws AmqpException, IOException {
+//        SimpleMessageListenerContainer container = new SimpleMessageListenerContainer(connectionFactory());
+//        container.setQueueNames(mqMsgQueues());
+//        container.setExposeListenerChannel(true);
+//        container.setPrefetchCount(prefetchCount);//设置每个消费者获取的最大的消息数量
+//        container.setConcurrentConsumers(concurrentConsumers);//消费者个数
+//        container.setAcknowledgeMode(AcknowledgeMode.MANUAL);//设置确认模式为手工确认
+//        container.setMessageListener(handleService);//监听处理类
+//        return container;
+//    }
+
 
 
 

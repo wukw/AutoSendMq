@@ -9,8 +9,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 @Component
 public class RabbitSendTemplate extends BaseSendTemplate<AutoSendRabbitMq,RabbitTemplate> {
-    @Autowired
-    ApplicationContext applicationContext;
+
 
 
     @Override

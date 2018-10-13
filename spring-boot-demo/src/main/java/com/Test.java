@@ -1,6 +1,7 @@
 package com;
 
 
+import com.atsmq.active.annotation.AutoSendActiveMq;
 import com.atsmq.annotation.EnableAutoMqProxy;
 import com.atsmq.rabbit.annotation.AutoSendRabbitMq;
 import org.springframework.amqp.core.ExchangeTypes;
@@ -14,6 +15,7 @@ public class Test   implements Ordered{
     }
 
     @AutoSendRabbitMq(exchangeNmae ="aaaa",exchangeType = ExchangeTypes.TOPIC,routingKey = "KKK")
+    @AutoSendActiveMq(queueName = "aaaa")
     public String show(){
         return "aaa";
     }

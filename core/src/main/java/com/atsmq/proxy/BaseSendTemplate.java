@@ -3,6 +3,7 @@ package com.atsmq.proxy;
 import com.atsmq.annotation.AnnotationMatchInterface;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 
 import java.lang.annotation.Annotation;
 
@@ -12,6 +13,9 @@ import java.lang.annotation.Annotation;
  * @param <T> 实际模板
  */
 public abstract  class BaseSendTemplate<A extends Annotation,T> implements MqSendTemplateInterface<A,T> ,InitializingBean{
+
+    @Autowired
+    public ApplicationContext applicationContext;
 
     boolean initTemplateIsSuccess = false;
 

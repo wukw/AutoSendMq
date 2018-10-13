@@ -2,4 +2,5 @@ rootProject.name = 'AutoSendMq'
 include 'core'
 include 'rabbit-plugin'
 include 'spring-boot-demo'
+include 'active-plugin'
 

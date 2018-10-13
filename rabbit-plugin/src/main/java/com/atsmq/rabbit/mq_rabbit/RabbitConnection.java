@@ -20,8 +20,5 @@ public class RabbitConnection extends BaseConnection<AutoSendRabbitMq,AbstractCo
        return  c = applicationContext.getBean(AbstractConnectionFactory.class);
     }
 
-    @Override
-    public AbstractConnectionFactory returnConnectionObject() {
-        return c;
-    }
+
 }

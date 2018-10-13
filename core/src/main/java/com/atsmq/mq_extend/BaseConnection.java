@@ -17,12 +17,13 @@ public abstract class BaseConnection<A extends Annotation,C> implements  MqConne
     public abstract C createConnectionObject() ;
 
     @Override
-    public abstract C returnConnectionObject();
+    public  C returnConnectionObject(){
+        return c;
+    }
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        C c = createConnectionObject();
-        MqConnectionFactory.register(annotationMatchInterface.getSupport(), c);
+        c = createConnectionObject();
         MqConnectionFactory.register(annotationMatchInterface.getSupport(), c);
     }
 }

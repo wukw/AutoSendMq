@@ -53,7 +53,6 @@ public class AutoSendMqAnnitationBean implements BeanFactoryPostProcessor,  Disp
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
-
     }
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {

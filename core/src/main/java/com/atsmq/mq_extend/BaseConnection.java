@@ -24,6 +24,6 @@ public abstract class BaseConnection<A extends Annotation,C> implements  MqConne
     @Override
     public void afterPropertiesSet() throws Exception {
         c = createConnectionObject();
-        MqConnectionFactory.register(annotationMatchInterface.getSupport(), c);
+        MqConnectionFactory.register(annotationMatchInterface.getSupport(), this);
     }
 }

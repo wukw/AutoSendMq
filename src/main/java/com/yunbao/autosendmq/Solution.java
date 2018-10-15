@@ -13,7 +13,7 @@ class Solution {
         if(endIndex==-1){
             return res;
         }
-
+        wordList.add(beginWord);
         int beginIndex=wordList.indexOf(beginWord);
         //若beginWord不在wordList中，则添加至wordList末尾
         if(beginIndex==-1){
@@ -75,6 +75,7 @@ class Solution {
     public void dfs(int lastIndex, List<String> list, List<List<String>> res, List<String> wordList, Map<Integer,List<Integer>> fatherNodes, int beginIndex){
         if(lastIndex==beginIndex){
             List<String> newList=new ArrayList<String>(list);
+            //翻转顺序
             Collections.reverse(newList);
             res.add(newList);
             return ;
@@ -106,7 +107,9 @@ class Solution {
 
     public static void main(String[] args) {
         String[] s = {"kiss","miss","muss","musk","tusk"};
-        new Solution().findLadders("kiss","tusk" , Arrays.asList(s));
+        List<String> list = new ArrayList<>();
+        list.addAll(Arrays.asList(s));
+        new Solution().findLadders("tiss","tusk" , list);
     }
 
 

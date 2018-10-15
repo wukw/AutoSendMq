@@ -12,14 +12,15 @@ import java.util.Map;
  */
 public class MqConnectionFactory extends BaseAnnotationFactory {
 
-    static Map map = new HashMap();
-    public static <K,V>  V instance(K k){
-        return(V)map.get(k);
+    static Map<Class<? extends  Annotation>,BaseConnection> map = new HashMap();
+    public static BaseConnection instance(Class<? extends  Annotation> k){
+        return map.get(k);
     }
-    public static <K>  boolean hasKey(K k) {
+    public static  boolean hasKey(Class<? extends  Annotation> k) {
         return map.containsKey(k);
     }
-    public static <K,V>  void register(K k, V v) {
+
+    public static  void register(Class<? extends  Annotation> k, BaseConnection v) {
         map.put(k, v);
     }
 }

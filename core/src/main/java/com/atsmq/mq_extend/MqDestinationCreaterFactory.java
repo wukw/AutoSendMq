@@ -15,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * 注解 和 mq目的地创建者 会在这里映射
  */
 public class MqDestinationCreaterFactory extends BaseAnnotationFactory {
-    static Map map = new HashMap();
+    static Map<Class<? extends  Annotation>,BaseMqDestination> map = new HashMap();
 
     static  Set<Class>  tragetClazz = new HashSet<>();
 
@@ -40,14 +40,13 @@ public class MqDestinationCreaterFactory extends BaseAnnotationFactory {
            }
         }
     }
-
-    public static <K,V>  V instance(K k){
-        return(V)map.get(k);
+    public static BaseMqDestination instance(Class<? extends  Annotation> k){
+        return map.get(k);
     }
-    public static <K>  boolean hasKey(K k) {
+    public static  boolean hasKey(Class<? extends  Annotation> k) {
         return map.containsKey(k);
     }
-    public static <K,V>  void register(K k, V v) {
+    public static  void register(Class<? extends  Annotation> k, BaseMqDestination v) {
         map.put(k, v);
     }
 
